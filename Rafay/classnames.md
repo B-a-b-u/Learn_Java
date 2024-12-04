@@ -7,7 +7,7 @@
 2. class name should be in pascal case
 3. class name should be noun
 4. If class name is abbreviation, acronym or numeronym than class name should be in upper case
-
+5. It is not recommended to write **$** on classname
 ### Rules
 1. Class name does not contain the white space.
 2. Class name must starts with non digit character
@@ -17,6 +17,13 @@
 6. If class is public, then **Class name and file name** must be same.
 7. The outer class can not be **private or public**.
 8. Incase of default class the **file name and class name** can be different.
+
+
+### Byte Codes
+* The number of byte code is directly dependent on number of classes
+* If a class is nested inside another class, then it produces two byte code but ont class name is **outerclass.class** and other one is **outerclass$innerclass.class** 
+* That's why it is not recommended to add $ to class name
+
 Eg:
 ```
 private class ClassName{
