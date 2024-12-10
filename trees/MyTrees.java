@@ -47,8 +47,8 @@ class Tree{
         }
         else{
             System.out.println(temp.data);
-            inorderTraversal(temp.left);
-            inorderTraversal(temp.right);
+            preorderTraversal(temp.left);
+            preorderTraversal(temp.right);
         }
     }
 
@@ -70,8 +70,8 @@ class Tree{
             return;
         }
         else{
-            inorderTraversal(temp.left);
-            inorderTraversal(temp.right);
+            postorderTraversal(temp.left);
+            postorderTraversal(temp.right);
             System.out.println(temp.data);
 
         }
@@ -91,28 +91,71 @@ class Tree{
             }
         }
     }
+
+    public boolean searchOnBST(TreeNode head, int target){
+        TreeNode node = head;
+        System.out.println("Node : "+node.data);
+        if(node == null){
+            return false;
+        }
+        else{
+            if(node.data == target) {
+                return true;
+            }
+            else if ( target < node.data) {
+                return searchOnBST(node.left, target);
+            }
+            else{
+                return searchOnBST(node.right, target);
+            }
+        }
+
+    }
+
+    public int sizeOfTree(TreeNode head)throws NullPointerException{
+        TreeNode node = head;
+        if(node == null){
+            return 0;
+        }
+        else{
+            System.out.println("Node in size : "+node.data);
+            return 1 + sizeOfTree(node.left) + sizeOfTree(node.right);
+        }
+    }
 }
 
 public class MyTrees{
     public static void main(String[] args) {
         
-        // Creating the nodes
-        TreeNode node1 = new TreeNode(10);
-        TreeNode node2 = new TreeNode(20);
-        TreeNode node3 = new TreeNode(30);
-        TreeNode node4 = new TreeNode(40);
-        TreeNode node5 = new TreeNode(50);
+        // // Creating the nodes
+        // TreeNode node1 = new TreeNode(10);
+        // TreeNode node2 = new TreeNode(7);
+        // TreeNode node3 = new TreeNode(12);
+        // TreeNode node4 = new TreeNode(9);
+        // TreeNode node5 = new TreeNode(8);
 
-        //          10
-        //     20           30
-        //  40                      50
-        // Connecting the nodes
+        // //          10
+        // //     20           30
+        // //  40                      50
+        // // Connecting the nodes
+        // node1.left = node2;
+        // node1.right = node3;
+
+        // node2.right = node4;
+
+        // node4.left = node5;
+
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node7 = new TreeNode(6);
+        TreeNode node6 = new TreeNode(7);
+
         node1.left = node2;
         node1.right = node3;
 
-        node2.left = node4;
-
-        node3.right = node5;
         
         Tree tree = new Tree();
         tree.preorderTraversal(node1);
@@ -122,5 +165,12 @@ public class MyTrees{
         tree.postorderTraversal(node1);
         System.out.println();
         tree.levelOrderTraversal(node1);
+
+
+        // System.out.println("Search");
+        // System.out.println(tree.searchOnBST(node1, 9));
+
+        System.out.println("size");
+        System.out.println(tree.sizeOfTree(node1));
     }
 }
